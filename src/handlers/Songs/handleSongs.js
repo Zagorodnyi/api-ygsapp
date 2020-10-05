@@ -12,7 +12,8 @@ exports.addSong = (req, res) => {
     lyrics: req.body.lyrics,
     addedBy: req.user.name,
     hasPlayback: req.body.hasPlayback || false,
-    songName: `${req.body.name} by ${req.body.author}`,
+    songName: req.body.name,
+    shortName: `${req.body.name} by ${req.body.author}`,
     createdAt: new Date().toISOString(),
     bpm: req.body.bpm,
   };
@@ -38,7 +39,7 @@ exports.addSong = (req, res) => {
 
       // Song File
       batch.set(ref, song);
-      listRec[id] = song.songName;
+      listRec[id] = song.shortName;
 
       // Songs List Record
       batch.update(refList, listRec);
@@ -65,7 +66,8 @@ exports.editSong = (req, res) => {
     lyrics: req.body.lyrics,
     addedBy: req.user.name,
     hasPlayback: req.body.hasPlayback,
-    songName: `${req.body.name} by ${req.body.author}`,
+    songName: req.body.name,
+    shortName: `${req.body.name} by ${req.body.author}`,
     createdAt: new Date().toISOString(),
     bpm: req.body.bpm,
   };
@@ -85,7 +87,7 @@ exports.editSong = (req, res) => {
   batch.update(ref, song);
 
   // Update Songs List
-  listRec[id] = song.songName;
+  listRec[id] = song.shortName;
   batch.update(refList, listRec);
 
   // Commit Batch
