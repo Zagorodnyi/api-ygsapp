@@ -1,0 +1,33 @@
+{
+  "name": "api.ygschurch.com",
+  "version": "1.0.4",
+  "description": "backend api for web/mobile app client",
+  "main": "server.js",
+  "scripts": {
+    "test": "nodemon src/server.js",
+    "start": "node src/server.js"
+  },
+  "author": "Viacheslav Zahorodnyi",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "compression": "^1.7.4",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "firebase": "^7.16.1",
+    "firebase-admin": "^9.0.0",
+    "helmet": "^3.23.3",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.27.0",
+    "moment-timezone": "^0.5.31",
+    "socket.io": "^2.3.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.5.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "nodemon": "^2.0.4"
+  }
+}
