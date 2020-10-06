@@ -65,7 +65,7 @@ exports.editSong = (req, res) => {
     chords: req.body.chords,
     lyrics: req.body.lyrics,
     addedBy: req.user.name,
-    hasPlayback: req.body.hasPlayback,
+    hasPlayback: req.body.hasPlayback || false,
     songName: req.body.name,
     shortName: `${req.body.name} by ${req.body.author}`,
     createdAt: new Date().toISOString(),
