@@ -138,7 +138,7 @@ exports.getFutureEvents = (req, res) => {
   // Search through the DB collection
   db.collection("WeekEvents")
     .where("date", ">", monday)
-    .orderBy("date", "asc")
+    .orderBy("date", "desc")
     .get()
 
     // Returns All Events older than monday of current week
