@@ -130,3 +130,60 @@ exports.getHistoryEvents = (req, res) => {
       res.json({ error: locale.UNKNOWN_ERROR });
     });
 };
+
+exports.getFutureEvents = (req, res) => {
+  // Get the Start of the week
+  let monday = new Date().monday.get();
+
+  // Search through the DB collection
+  db.collection("WeekEvents")
+    .where("date", ">", monday)
+    .orderBy("date", "asc")
+    .get()
+
+    // Returns All Events older than monday of current week
+    .then((data) => {
+      // If Empty
+      if (data.docs.length === 0) {
+        res.status(200).json({ message: locale.NO_HISTORY });
+      }
+      // Map docs to add an Id in each object
+      let docs = [];
+      data.docs.map((doc) => {
+        docs.push({ ...doc.data(), id: doc.id });
+      });
+      return docs;
+    })
+    .then((docs) => {
+      // Define User team/permissions
+      let usrTeam = req.user.team;
+
+      // Filter only Events related to User
+      return (teamRelatedDocs = docs.filter((doc) => {
+        // Global filter status
+        let status = false;
+
+        // Map through event type
+        doc.type.map((type) => {
+          // If type General or User is Admin - return true
+          if (type === "general" || req.user.isAdmin()) {
+            return (status = true);
+          } else {
+            // Else compare event type to User teams
+            return usrTeam.includes(type) && (status = true);
+          }
+        });
+
+        // Return status to filter callback
+        return status;
+      }));
+    })
+    // Respond Success
+    .then((docs) => {
+      res.status(200).json({ docs });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.json({ error: locale.UNKNOWN_ERROR });
+    });
+};

@@ -14,9 +14,10 @@ router.post("/edit/:id", cookieAuth, isLeader, editEvent);
 router.delete("/delete/:id", cookieAuth, isLeader, deleteEvent);
 
 // Get Actual Events or History
-const { getAllEvents, getHistoryEvents } = handleWeekPlan;
+const { getAllEvents, getHistoryEvents, getFutureEvents } = handleWeekPlan;
 
 router.get("/", cookieAuth, getAllEvents);
 router.get("/history", cookieAuth, getHistoryEvents);
+router.get("/all", cookieAuth, getFutureEvents);
 
 module.exports = router;
