@@ -14,8 +14,9 @@ router.post("/login", login, createCookie);
 router.get("/logout", cookieAuth, logout);
 
 // Get User
-const { getUser, getMe } = GetUsers;
+const { getUser, getMe, getPeople } = GetUsers;
 router.get("/users/current/info", cookieAuth, getMe);
+router.get("/users/all", cookieAuth, getPeople);
 router.get("/users/:id", cookieAuth, getUser);
 
 // User Actions

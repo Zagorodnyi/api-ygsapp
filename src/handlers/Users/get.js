@@ -1,5 +1,6 @@
 const { admin, db, auth } = require("../../utils/admin");
 const locale = require("../../localization/EN");
+const { UNKNOWN_ERROR } = require("../../localization/EN");
 
 // Get User by id in params. Returns an Object with Usr Info
 exports.getUser = (req, res) => {
@@ -17,6 +18,19 @@ exports.getUser = (req, res) => {
     })
     .catch((err) => {
       console.error(err);
+      res.status(500).json({ error: locale.UNKNOWN_ERROR });
+    });
+};
+
+exports.getPeople = (req, res) => {
+  db.collection("Users")
+    .doc("People")
+    .get()
+    .then((doc) => {
+      res.json(doc.data());
+    })
+    .catch((err) => {
+      console.log(err);
       res.status(500).json({ error: locale.UNKNOWN_ERROR });
     });
 };
