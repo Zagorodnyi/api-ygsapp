@@ -9,8 +9,8 @@ exports.newEvent = (req, res) => {
     description: req.body.description || null,
     eventName: req.body.eventName,
     type: req.body.type,
-    createdBy: req.user.name,
-    photoURL: req.user.picture,
+    createdBy: req.user.uid,
+    // photoURL: req.user.picture,
     createdAt: new Date().toUTCString(),
   };
 
@@ -35,7 +35,7 @@ exports.editEvent = (req, res) => {
     description: req.body.description || null,
     eventName: req.body.eventName,
     type: req.body.type, // Recieves an Array
-    editedBy: req.user.name,
+    editedBy: req.user.uid,
   };
 
   // Update DB Files
