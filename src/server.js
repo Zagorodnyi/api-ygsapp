@@ -1,7 +1,6 @@
 const express = require("express");
 const app = express();
 const helmet = require("helmet");
-const compression = require("compression");
 
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
@@ -55,4 +54,6 @@ app.get("/get", cookieAuth, (req, res) => {
 
 const port = process.env.PORT || 3002;
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+module.exports = app.listen(port, () =>
+  console.log(`Example app listening on port ${port}!`)
+);

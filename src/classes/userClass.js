@@ -7,19 +7,23 @@ module.exports = class User {
   constructor({
     email,
     uid,
+    id,
     userHandle,
+    displayName,
     name,
     phone_number,
+    phoneNumber,
     picture,
+    photoURL,
     team,
     leadership,
   }) {
     this.email = email;
-    this.uid = uid;
+    this.uid = uid || id;
     this.userHandle = userHandle;
-    this.name = name;
-    this.phone = phone_number;
-    this.picture = picture;
+    this.name = name || displayName;
+    this.phone = phone_number || phoneNumber;
+    this.picture = picture || photoURL;
     this.team = team;
     this.leadership = leadership;
   }
