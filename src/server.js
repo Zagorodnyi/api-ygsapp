@@ -18,30 +18,36 @@ const corsOptions = {
     "http://localhost:3000",
   ],
   credentials: true,
-  // exposedHeaders: ["set-cookie"],
 };
 // MiddleWare
 app.use(helmet());
 app.use(cookieParser());
-app.use(bodyParser());
+app.use(
+  bodyParser.urlencoded({
+    extended: false,
+  })
+);
+app.use(bodyParser.json());
 app.use(cors(corsOptions));
 
 // User Auth Routes
-const Users = require("./handlers/Users/User.js");
+const Users = require("./API/Users/User");
 app.use("/", Users);
 
 // Events routes
-const Events = require("./handlers/WeekPlan/Events");
+const Events = require("./API/WeekPlan/Events");
 app.use("/week-events", Events);
 
 //Songs Library routes
-const Songs = require("./handlers/Songs/Songs");
+const Songs = require("./API/Songs/Songs");
 app.use("/songs", Songs);
 
 //Service Plan routes
-const ServicePlan = require("./handlers/ServicePlans/ServicePlan");
-
+const ServicePlan = require("./API/ServicePlans/ServicePlan");
 app.use("/plan", ServicePlan);
+
+const Teams = require("./API/Teams/Teams");
+app.use("/teams", Teams);
 
 app.get("/get", cookieAuth, (req, res) => {
   res.json(req.user);

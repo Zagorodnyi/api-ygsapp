@@ -9,6 +9,10 @@ module.exports = {
   PLAN_CHANGED: "Changes saved to the plan",
   PLAN_DELTED: "Plan was successfylly deleted",
 
+  // Teams Messages
+  NO_SERVICE_FOUND: "No service found by this ID",
+  NO_MEMBERS_ARRAY_PROVIDED: "No members field in request",
+
   // Event Messages
   EVENT_CREATE: "New Event has been created",
   EVENT_EDIT: "Changes has been saved",

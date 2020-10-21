@@ -1,6 +1,5 @@
 .env
 *.txt
-*.md
 node_modules
 firebase.json
 .firebaserc
