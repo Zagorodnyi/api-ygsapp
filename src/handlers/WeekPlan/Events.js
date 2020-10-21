@@ -2,8 +2,8 @@ const express = require("express");
 const router = express.Router();
 
 const cookieAuth = require("../../utils/cookieAuth");
-const handleEvents = require("./handleEvents");
-const handleWeekPlan = require("./handleWeekPlan");
+const handleEvents = require("./WeekEventsRequests");
+const handleWeekPlan = require("./GetWeekPlanRequests");
 const { isLeader } = require("../Users/userPermissions");
 
 // Events Actions

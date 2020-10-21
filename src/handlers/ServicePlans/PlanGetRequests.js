@@ -3,10 +3,19 @@ const locale = require("../../localization/EN");
 
 // Get Plan by ID. Returns an object with Plan info
 exports.getPlanById = (req, res) => {
+  const teamsRef = db.doc(`/ServiceTeams/${req.params.id}`);
+  let plan, teams;
   // DB Request
   db.doc(`ServicePlans/${req.params.id}`)
     .get()
-    .then((doc) => res.status(200).json(doc.data()))
+    .then((doc) => {
+      plan = doc.data();
+      return teamsRef.get();
+    })
+    .then((doc) => {
+      teams = doc.data();
+      res.status(200).json({ plan, teams });
+    })
     .catch((err) => {
       console.log(err);
       res.status(500).json({ error: locale.UNKNOWN_ERROR });

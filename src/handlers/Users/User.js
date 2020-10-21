@@ -3,9 +3,9 @@ const cookieAuth = require("../../utils/cookieAuth");
 const router = express.Router();
 
 // Require routes
-const PostUsers = require("./post");
-const GetUsers = require("./get");
-const UserPermissions = require("./userPermissions");
+const PostUsers = require("./PostUserRequests");
+const GetUsers = require("./GetUserRequests");
+const UserPermissions = require("./UserPermissionRequests");
 
 // Authentication
 const { signup, login, updateUser, createCookie, logout } = PostUsers;

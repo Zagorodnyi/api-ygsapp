@@ -49,7 +49,7 @@ exports.createPlan = (req, res) => {
   // Commit batch
   batch
     .commit()
-    .then(() => res.status(200).json({ message: locale.PLAN_CREATED }))
+    .then(() => res.status(201).json({ message: locale.PLAN_CREATED }))
     .catch((err) => {
       console.log(err);
       res.json({ error: locale.UNKNOWN_ERROR });
@@ -101,7 +101,7 @@ exports.updatePlan = (req, res) => {
   // Commin batch
   batch
     .commit()
-    .then(() => res.status(200).json({ message: locale.PLAN_CHANGED }))
+    .then(() => res.status(201).json({ message: locale.PLAN_CHANGED }))
     .catch((err) => {
       console.log(err);
       res.status(500).json({ error: locale.UNKNOWN_ERROR });
@@ -125,7 +125,7 @@ exports.deletePlan = (req, res) => {
   // Commit batch
   batch
     .commit()
-    .then(() => res.status(200).json({ message: locale.PLAN_DELTED }))
+    .then(() => res.status(202).json({ message: locale.PLAN_DELTED }))
     .catch((err) => {
       console.log(err);
       res.status(500).json({ error: locale.UNKNOWN_ERROR });

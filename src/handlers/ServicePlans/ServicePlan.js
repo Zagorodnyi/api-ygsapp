@@ -1,9 +1,13 @@
 const express = require("express");
 const router = express.Router();
 const cookieAuth = require("../../utils/cookieAuth");
-const { isAdmin } = require("../Users/userPermissions");
-const { createPlan, updatePlan, deletePlan } = require("./handlePlan");
-const { getPlanById, getCurrentPlan, planManager } = require("./getPlan");
+const { isAdmin } = require("../Users/UserPermissionRequests");
+const { createPlan, updatePlan, deletePlan } = require("./PlanPostRequests");
+const {
+  getPlanById,
+  getCurrentPlan,
+  planManager,
+} = require("./PlanGetRequests");
 
 // Plan actions
 // Admin Only

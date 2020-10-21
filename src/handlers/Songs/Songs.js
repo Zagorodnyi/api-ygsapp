@@ -8,7 +8,7 @@ const {
   deleteSong,
   songList,
   getSong,
-} = require("./handleSongs");
+} = require("./SongsRequests");
 
 // Get Songs
 router.get("/list", songList);
