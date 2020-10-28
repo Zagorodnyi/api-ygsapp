@@ -7,6 +7,7 @@
     "node": "14.x"
   },
   "scripts": {
+    "test": "jest --config --forceExit",
     "test-node": "nodemon src/server.js",
     "start": "node src/server.js"
   },
@@ -14,7 +15,6 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
-    "compression": "^1.7.4",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
@@ -25,9 +25,8 @@
     "socket.io": "^2.3.0"
   },
   "devDependencies": {
-    "eslint": "^7.11.0",
-    "eslint-config-airbnb-base": "^14.2.0",
-    "eslint-plugin-import": "^2.22.1",
-    "nodemon": "^2.0.6"
+    "jest": "^26.6.0",
+    "nodemon": "^2.0.6",
+    "supertest": "^5.0.0"
   }
 }

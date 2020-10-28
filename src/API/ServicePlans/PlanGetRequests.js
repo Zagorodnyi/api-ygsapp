@@ -13,8 +13,13 @@ exports.getPlanById = (req, res) => {
       return teamsRef.get();
     })
     .then((doc) => {
-      teams = doc.data();
-      res.status(200).json({ plan, teams });
+      if (!doc.data()) {
+        res.status(404).json({ message: locale.NO_PLANS });
+        return;
+      } else {
+        teams = doc.data();
+        res.status(200).json({ plan, teams });
+      }
     })
     .catch((err) => {
       console.log(err);
@@ -35,7 +40,7 @@ exports.getCurrentPlan = (req, res) => {
     .then((data) => {
       // Response if Empty
       if (data.docs.length === 0) {
-        res.json({ message: locale.NO_PLANS });
+        res.status(404).json({ message: locale.NO_PLANS });
       }
 
       // ELSE Response with plan
@@ -59,7 +64,7 @@ exports.planManager = (req, res) => {
     .then((data) => {
       // Response if Empty
       if (data.docs.length === 0) {
-        res.json({ message: locale.NO_PLANS_MANAGER });
+        res.status(404).json({ message: locale.NO_PLANS_MANAGER });
       }
 
       // Map docs Data to an Array

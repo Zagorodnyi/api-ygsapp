@@ -15,7 +15,7 @@ module.exports =
     // Check CHAI API
     else if (req.headers["x-api-key"]) {
       api = req.headers["x-api-key"];
-      if (api === process.env.API_CHAI) {
+      if (api === process.env.API_JEST) {
         db.collection("Users")
           .where("id", "==", process.env.API_ID)
           .limit(1)

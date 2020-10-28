@@ -123,7 +123,6 @@ exports.signup = (req, res) => {
 /// --- LOGIN with next() to create cookie  ---///
 
 exports.login = (req, res, next) => {
-  console.log("Gotcha");
   // Form Object from request params
   const user = {
     email: req.body.email,
